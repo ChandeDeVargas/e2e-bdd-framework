@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Pytest
+.pytest_cache/
+
+# Reports - keep directory, ignore files
+reports/*.html
+reports/*.json
+reports/*.xml
+!reports/.gitkeep
+
+# Screenshots - keep directory, ignore files
+screenshots/*.png
+screenshots/*.jpg
+!screenshots/.gitkeep
+
+# Videos - keep directory, ignore files  
+videos/*.webm
+videos/*.mp4
+!videos/.gitkeep
+
+# Playwright
+playwright-report/
+test-results/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

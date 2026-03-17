@@ -227,15 +227,10 @@ class BasePage:
         Args:
             url_part: Expected URL part
         """
-        expect(self.page).to_have_url(
-            f".*{url_part}.*",
-            timeout=self.timeout
-        )
+        actual_url = self.page.url
+        assert url_part in actual_url, \
+            f"Expected URL to contain '{url_part}', but got '{actual_url}'"
         print(f"\n✔ Assertion passed: URL contains: {url_part}")
-
-    # ============================================
-    # Get Methods
-    # ============================================
 
     def get_text(self, selector: str) -> str:
         """
@@ -306,7 +301,7 @@ class BasePage:
             full_page: Capture full page or viewport only
         """
         self.page.screenshot(path=filename, full_page=full_page)
-        print(f"📸 Screenshot saved: {filename}")
+        print(f"Screenshot saved: {filename}")
     
     
     # ============================================
@@ -316,16 +311,306 @@ class BasePage:
     def reload_page(self) -> None:
         """Reload current page"""
         self.page.reload()
-        print("🔄 Page reloaded")
+        print("Page reloaded")
     
     
     def go_back(self) -> None:
         """Navigate back"""
         self.page.go_back()
-        print("⬅️ Navigated back")
+        print("Navigated back")
     
     
     def go_forward(self) -> None:
         """Navigate forward"""
         self.page.go_forward()
-        print("➡️ Navigated forward")
+        print("Navigated forward")
+        
+    # ============================================
+    # Additional Assertion Methods (IMPROVEMENTS)
+    # ============================================
+
+    def assert_element_count(self, selector: str, expected_count: int) -> None:
+        """
+        Assert exact number of elements.
+
+        Useful for verifying lists, tables, etc.
+
+        Args:
+            selector: Element selector
+            expected_count: Expected number of elements
+        """
+        actual_count = self.page.locator(selector).count()
+
+        assert actual_count == expected_count, \
+            f"Expected {expected_count} elements, but found {actual_count}"
+
+        print(f"Assertion passed: Found {expected_count} elements matching '{selector}'")
+
+
+    def assert_url_exact(self, expected_url: str) -> None:
+        """
+        Assert exact URL match (not pattern).
+
+        Different from assert_url_contains - this is exact.
+
+        Args:
+            expected_url: Exact expected URL
+        """
+        actual_url = self.page.url
+
+        assert actual_url == expected_url, \
+            f"Expected URL '{expected_url}', but got '{actual_url}'"
+
+        print(f"Assertion passed: URL is exactly '{expected_url}'")
+
+
+    def assert_enabled(self, selector: str) -> None:
+        """
+        Assert element is enabled (clickable/editable).
+
+        Useful for verifying that buttons or inputs are enabled.
+
+        Args:
+            selector: Element selector
+        """
+        is_enabled = self.page.locator(selector).is_enabled()
+
+        assert is_enabled, \
+            f"Element '{selector}' should be enabled but is disabled"
+
+        print(f"Assertion passed: Element '{selector}' is enabled")
+
+
+    def assert_disabled(self, selector: str) -> None:
+        """
+        Assert element is disabled.
+
+        Useful for verifying that certain fields are blocked.
+
+        Args:
+            selector: Element selector
+        """
+        is_disabled = not self.page.locator(selector).is_enabled()
+
+        assert is_disabled, \
+            f"Element '{selector}' should be disabled but is enabled"
+
+        print(f"Assertion passed: Element '{selector}' is disabled")
+
+
+    def assert_checked(self, selector: str) -> None:
+        """
+        Assert checkbox/radio is checked.
+
+        Args:
+            selector: Checkbox/radio selector
+        """
+        is_checked = self.page.locator(selector).is_checked()
+
+        assert is_checked, \
+            f"Element '{selector}' should be checked but is not"
+
+        print(f"Assertion passed: Element '{selector}' is checked")
+
+
+    def assert_not_checked(self, selector: str) -> None:
+        """
+        Assert checkbox/radio is NOT checked.
+
+        Args:
+            selector: Checkbox/radio selector
+        """
+        is_not_checked = not self.page.locator(selector).is_checked()
+
+        assert is_not_checked, \
+            f"Element '{selector}' should NOT be checked but is"
+
+        print(f"Assertion passed: Element '{selector}' is NOT checked")
+
+
+    def assert_has_class(self, selector: str, class_name: str) -> None:
+        """
+        Assert element has specific CSS class.
+
+        Useful for verifying visual states (active, disabled, error, etc).
+
+        Args:
+            selector: Element selector
+            class_name: Expected CSS class
+        """
+        element_class = self.page.locator(selector).get_attribute("class") or ""
+
+        assert class_name in element_class, \
+            f"Element '{selector}' should have class '{class_name}' but has '{element_class}'"
+
+        print(f"Assertion passed: Element '{selector}' has class '{class_name}'")
+
+
+    # ============================================
+    # Scroll Methods (IMPROVEMENTS)
+    # ============================================
+
+    def scroll_to_element(self, selector: str) -> None:
+        """
+        Scroll to make element visible.
+
+        Useful when element is out of view.
+
+        Args:
+            selector: Element selector
+        """
+        self.page.locator(selector).scroll_into_view_if_needed()
+        print(f"Scrolled to element '{selector}'")
+
+
+    def scroll_to_bottom(self) -> None:
+        """
+        Scroll to bottom of page.
+
+        Useful for loading lazy-loaded content or viewing footers.
+        """
+        self.page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        print("Scrolled to bottom of page")
+
+
+    def scroll_to_top(self) -> None:
+        """
+        Scroll to top of page.
+
+        Useful for returning to the top after scrolling down.
+        """
+        self.page.evaluate("window.scrollTo(0, 0)")
+        print("Scrolled to top of page")
+
+
+    def scroll_by_pixels(self, x: int = 0, y: int = 500) -> None:
+        """
+        Scroll by specific pixel amount.
+
+        Args:
+            x: Horizontal pixels (default: 0)
+            y: Vertical pixels (default: 500)
+        """
+        self.page.evaluate(f"window.scrollBy({x}, {y})")
+        print(f"Scrolled by {x}px horizontally and {y}px vertically")
+
+
+    # ============================================
+    # Enhanced Screenshot Methods (IMPROVEMENTS)
+    # ============================================
+
+    def take_screenshot_with_timestamp(self, name: str, full_page: bool = True) -> str:
+        """
+        Take screenshot with automatic timestamp.
+
+        Useful for saving multiple screenshots without overwriting.
+
+        Args:
+            name: Base name for screenshot
+            full_page: Capture full page or viewport only
+
+        Returns:
+            str: Path to saved screenshot
+        """
+        from datetime import datetime
+        import os
+
+        # Create a directory if not exist
+        os.makedirs("screenshot", exist_ok=True)
+
+        # Generate a name with timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"screenshots/{name}_{timestamp}.png"
+
+        # Take screenshot
+        self.page.screenshot(path=filename, full_page=full_page)
+        print(f"Screenshot saved: {filename}")
+
+        return filename
+
+
+    def take_element_screenshot(self, selector: str, filename: str) -> str:
+        """
+        Take screenshot of specific element only.
+
+        Useful for capturing only a specific component.
+
+        Args:
+            selector: Element selector
+            filename: Screenshot filename
+
+        Returns:
+            str: Path to saved screenshot
+        """
+        import os
+        os.makedirs("screenshots", exist_ok=True)
+
+        filepath = f"screenshots/{filename}"
+        self.page.locator(selector).screenshot(path=filepath)
+        print(f"Element screenshot saved: {filepath}")
+
+        return filepath
+
+
+    # ============================================
+    # Additional Utility Methods (IMPROVEMENTS)
+    # ============================================
+
+    def hover(self, selector: str) -> None:
+        """
+        Hover over element.
+
+        Useful for dropdown menus or tooltips.
+        
+        Args:
+            selector: Element selector
+        """
+        self.page.locator(selector).hover()
+        print(f"Hovered over: {selector}")
+    
+    
+    def double_click(self, selector: str) -> None:
+        """
+        Double click element.
+        
+        Args:
+            selector: Element selector
+        """
+        self.page.locator(selector).dblclick()
+        print(f"Double clicked: {selector}")
+    
+    
+    def right_click(self, selector: str) -> None:
+        """
+        Right click element (context menu).
+        
+        Args:
+            selector: Element selector
+        """
+        self.page.locator(selector).click(button="right")
+        print(f"Right clicked: {selector}")
+    
+    
+    def get_page_title(self) -> str:
+        """
+        Get page title.
+        
+        Returns:
+            str: Page title
+        """
+        title = self.page.title()
+        print(f"Page title: {title}")
+        return title
+    
+    
+    def clear_input(self, selector: str) -> None:
+        """
+        Clear input field.
+        
+        Useful before filling a field that already has content.
+        
+        Args:
+            selector: Input selector
+        """
+        self.page.locator(selector).clear()
+        print(f"Cleared input: {selector}")

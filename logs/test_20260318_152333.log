@@ -1,0 +1,14 @@
+2026-03-18 15:23:33 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:23:33 | INFO     | E2E_BDD_Tests | Test Logger initialized
+2026-03-18 15:23:33 | INFO     | E2E_BDD_Tests | Log file: logs/test_20260318_152333.log
+2026-03-18 15:23:33 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:23:39 | INFO     | E2E_BDD_Tests | 
+2026-03-18 15:23:39 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:23:39 | INFO     | E2E_BDD_Tests | Test started: test_logging_in_action[chromium]
+2026-03-18 15:23:39 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:23:40 | INFO     | E2E_BDD_Tests | STEP: Start logging test
+2026-03-18 15:23:40 | INFO     | E2E_BDD_Tests | STEP: Open todo page
+2026-03-18 15:23:41 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:23:41 | INFO     | E2E_BDD_Tests | TEST FAILED: test_logging_in_action[chromium]
+2026-03-18 15:23:41 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:23:41 | INFO     | E2E_BDD_Tests | 

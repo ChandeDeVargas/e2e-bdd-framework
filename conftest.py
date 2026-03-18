@@ -204,3 +204,31 @@ def pytest_sessionstart(session):
         shutil.rmtree("reports")
 
     os.makedirs("reports")
+    
+# ============================================
+# Logging Fixtures
+# ============================================
+
+from utils.logger import test_logger
+
+@pytest.fixture(autouse=True)
+def log_test_info(request):
+    """
+    Automatically log test start/end.
+    
+    Runs for every test automatically.
+    """
+    test_name = request.node.name
+    
+    # Log test start
+    test_logger.test_start(test_name)
+    
+    yield
+    
+    # Log test end
+    if hasattr(request.node, 'rep_call'):
+        status = "PASSED" if request.node.rep_call.passed else "FAILED"
+    else:
+        status = "PASSED"
+    
+    test_logger.test_end(test_name, status)

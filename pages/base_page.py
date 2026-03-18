@@ -6,6 +6,7 @@ All page objects inherit from BasePage to share common methods.
 """
 from playwright.sync_api import Page, expect
 from typing import Optional
+from utils.logger import test_logger
 
 class BasePage:
     """
@@ -40,8 +41,9 @@ class BasePage:
         Args:
             url: URL to navigate to
         """
+        test_logger.action(f"Navigating to: {url}")
         self.page.goto(url, timeout=self.timeout)
-        print(f"\n✔ Navigated to: {url}")
+        test_logger.info(f"\n✔ Navigated to: {url}")
 
     def get_current_url(self) -> str:
         """
@@ -72,8 +74,9 @@ class BasePage:
         Args:
             selector: Element selector
         """
+        test_logger.action(f"Clicking on: {selector}")
         self.page.click(selector, timeout=self.timeout)
-        print(f"\n✔ Clicked on: {selector}")
+        test_logger.info(f"\n✔ Clicked on: {selector}")
 
     def fill(self, selector: str, text: str) -> None:
         """
@@ -83,8 +86,9 @@ class BasePage:
             selector: Input selector
             text: Text to fill
         """
+        test_logger.action(f"Filling '{selector}' with text: {text}")
         self.page.fill(selector, text, timeout=self.timeout)
-        print(f"\n✔ Filled '{selector}' with text: {text}")
+        test_logger.info(f"\n✔ Filled '{selector}' with text: {text}")
 
     def type_text(self, selector: str, text: str, delay: int = 100) -> None:
         """
@@ -95,8 +99,9 @@ class BasePage:
             text: Text to type
             delay: Delay between keystrokes in ms
         """
+        test_logger.action(f"Typing '{text}' into '{selector}'")
         self.page.type(selector, text, delay=delay, timeout=self.timeout)
-        print(f"\n✔ Typed: {text}")
+        test_logger.info(f"\n✔ Typed: {text}")
 
     def press_key(self, selector: str, key: str) -> None:
         """
@@ -106,8 +111,9 @@ class BasePage:
             selector: Element selector
             key: Key to press (e.g., 'Enter', 'Escape')
         """
+        test_logger.action(f"Pressing key: '{key}' on: {selector}")
         self.page.press(selector, key, timeout=self.timeout)
-        print(f"\n✔ Pressed key: '{key}' on: {selector}")
+        test_logger.info(f"\n✔ Pressed key: '{key}' on: {selector}")
 
     def select_option(self, selector: str, value: str) -> None:
         """
@@ -117,8 +123,9 @@ class BasePage:
             selector: Select element selector
             value: Option value to select
         """
+        test_logger.action(f"Selecting option: '{value}' in: {selector}")
         self.page.select_option(selector, value, timeout=self.timeout)
-        print(f"\n✔ Selected option: '{value}' in: {selector}")
+        test_logger.info(f"\n✔ Selected option: '{value}' in: {selector}")
 
     def check(self, selector: str) -> None:
         """
@@ -127,8 +134,9 @@ class BasePage:
         Args:
             selector: Checkbox selector
         """
+        test_logger.action(f"Checking: {selector}")
         self.page.check(selector, timeout=self.timeout)
-        print(f"\n✔ Checked: {selector}")
+        test_logger.info(f"\n✔ Checked: {selector}")
 
     def uncheck(self, selector: str) -> None:
         """
@@ -137,8 +145,9 @@ class BasePage:
         Args:
             selector: Checkbox selector
         """
+        test_logger.action(f"Unchecking: {selector}")
         self.page.uncheck(selector, timeout=self.timeout)
-        print(f"\n✔ Unchecked: {selector}")
+        test_logger.info(f"\n✔ Unchecked: {selector}")
 
     # ============================================
     # Wait Methods
@@ -157,7 +166,7 @@ class BasePage:
             state=state,
             timeout=self.timeout
         )
-        print(f"\n✔ Element {state}: {selector}")
+        test_logger.info(f"\n✔ Element {state}: {selector}")
 
     def wait_for_url(self, url_pattern: str) -> None:
         """
@@ -167,7 +176,7 @@ class BasePage:
             url_pattern: URL pattern to wait for
         """
         self.page.wait_for_url(url_pattern, timeout=self.timeout)
-        print(f"\n✔ URL matched: {url_pattern}")
+        test_logger.info(f"\n✔ URL matched: {url_pattern}")
 
     def wait_for_timeout(self, milliseconds: int) -> None:
         """
@@ -192,7 +201,7 @@ class BasePage:
         expect(self.page.locator(selector)).to_be_visible(
             timeout=self.timeout
         )
-        print(f"\n✔ Assertion passed: {selector} is visible")
+        test_logger.info(f"\n✔ Assertion passed: {selector} is visible")
     
     def assert_not_visible(self, selector: str) -> None:
         """
@@ -204,7 +213,7 @@ class BasePage:
         expect(self.page.locator(selector)).not_to_be_visible(
             timeout=self.timeout
         )
-        print(f"\n✔ Assertion passed: {selector} is not visible")
+        test_logger.info(f"\n✔ Assertion passed: {selector} is not visible")
 
     def assert_text(self, selector: str, expected_text: str) -> None:
         """
@@ -218,7 +227,7 @@ class BasePage:
             expected_text,
             timeout=self.timeout
         )
-        print(f"\n✔ Assertion passed: {selector} contains text: {expected_text}")
+        test_logger.info(f"\n✔ Assertion passed: {selector} contains text: {expected_text}")
 
     def assert_url_contains(self, url_part: str) -> None:
         """
@@ -230,7 +239,7 @@ class BasePage:
         actual_url = self.page.url
         assert url_part in actual_url, \
             f"Expected URL to contain '{url_part}', but got '{actual_url}'"
-        print(f"\n✔ Assertion passed: URL contains: {url_part}")
+        test_logger.info(f"\n✔ Assertion passed: URL contains: {url_part}")
 
     def get_text(self, selector: str) -> str:
         """
@@ -243,7 +252,7 @@ class BasePage:
             str: Element text
         """
         text = self.page.locator(selector).text_content(timeout=self.timeout)
-        print(f"\n✔ Got text from: {selector}: {text}")
+        test_logger.info(f"\n✔ Got text from: {selector}: {text}")
         return text
 
     def get_attribute(self, selector: str, attribute: str) -> Optional[str]:
@@ -261,7 +270,7 @@ class BasePage:
             attribute,
             timeout=self.timeout
         )
-        print(f"\n✔ Got attribute from: {selector}: {value}")
+        test_logger.info(f"\n✔ Got attribute from: {selector}: {value}")
         return value
 
     def is_visible(self, selector: str) -> bool:
@@ -301,7 +310,7 @@ class BasePage:
             full_page: Capture full page or viewport only
         """
         self.page.screenshot(path=filename, full_page=full_page)
-        print(f"Screenshot saved: {filename}")
+        test_logger.info(f"Screenshot saved: {filename}")
     
     
     # ============================================
@@ -311,19 +320,19 @@ class BasePage:
     def reload_page(self) -> None:
         """Reload current page"""
         self.page.reload()
-        print("Page reloaded")
+        test_logger.info("Page reloaded")
     
     
     def go_back(self) -> None:
         """Navigate back"""
         self.page.go_back()
-        print("Navigated back")
+        test_logger.info("Navigated back")
     
     
     def go_forward(self) -> None:
         """Navigate forward"""
         self.page.go_forward()
-        print("Navigated forward")
+        test_logger.info("Navigated forward")
         
     # ============================================
     # Additional Assertion Methods (IMPROVEMENTS)
@@ -344,7 +353,7 @@ class BasePage:
         assert actual_count == expected_count, \
             f"Expected {expected_count} elements, but found {actual_count}"
 
-        print(f"Assertion passed: Found {expected_count} elements matching '{selector}'")
+        test_logger.info(f"Assertion passed: Found {expected_count} elements matching '{selector}'")
 
 
     def assert_url_exact(self, expected_url: str) -> None:
@@ -361,7 +370,7 @@ class BasePage:
         assert actual_url == expected_url, \
             f"Expected URL '{expected_url}', but got '{actual_url}'"
 
-        print(f"Assertion passed: URL is exactly '{expected_url}'")
+        test_logger.info(f"Assertion passed: URL is exactly '{expected_url}'")
 
 
     def assert_enabled(self, selector: str) -> None:
@@ -378,7 +387,7 @@ class BasePage:
         assert is_enabled, \
             f"Element '{selector}' should be enabled but is disabled"
 
-        print(f"Assertion passed: Element '{selector}' is enabled")
+        test_logger.info(f"Assertion passed: Element '{selector}' is enabled")
 
 
     def assert_disabled(self, selector: str) -> None:
@@ -395,7 +404,7 @@ class BasePage:
         assert is_disabled, \
             f"Element '{selector}' should be disabled but is enabled"
 
-        print(f"Assertion passed: Element '{selector}' is disabled")
+        test_logger.info(f"Assertion passed: Element '{selector}' is disabled")
 
 
     def assert_checked(self, selector: str) -> None:
@@ -410,7 +419,7 @@ class BasePage:
         assert is_checked, \
             f"Element '{selector}' should be checked but is not"
 
-        print(f"Assertion passed: Element '{selector}' is checked")
+        test_logger.info(f"Assertion passed: Element '{selector}' is checked")
 
 
     def assert_not_checked(self, selector: str) -> None:
@@ -425,7 +434,7 @@ class BasePage:
         assert is_not_checked, \
             f"Element '{selector}' should NOT be checked but is"
 
-        print(f"Assertion passed: Element '{selector}' is NOT checked")
+        test_logger.info(f"Assertion passed: Element '{selector}' is NOT checked")
 
 
     def assert_has_class(self, selector: str, class_name: str) -> None:
@@ -443,7 +452,7 @@ class BasePage:
         assert class_name in element_class, \
             f"Element '{selector}' should have class '{class_name}' but has '{element_class}'"
 
-        print(f"Assertion passed: Element '{selector}' has class '{class_name}'")
+        test_logger.info(f"Assertion passed: Element '{selector}' has class '{class_name}'")
 
 
     # ============================================
@@ -460,7 +469,7 @@ class BasePage:
             selector: Element selector
         """
         self.page.locator(selector).scroll_into_view_if_needed()
-        print(f"Scrolled to element '{selector}'")
+        test_logger.info(f"Scrolled to element '{selector}'")
 
 
     def scroll_to_bottom(self) -> None:
@@ -470,7 +479,7 @@ class BasePage:
         Useful for loading lazy-loaded content or viewing footers.
         """
         self.page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        print("Scrolled to bottom of page")
+        test_logger.info("Scrolled to bottom of page")
 
 
     def scroll_to_top(self) -> None:
@@ -480,7 +489,7 @@ class BasePage:
         Useful for returning to the top after scrolling down.
         """
         self.page.evaluate("window.scrollTo(0, 0)")
-        print("Scrolled to top of page")
+        test_logger.info("Scrolled to top of page")
 
 
     def scroll_by_pixels(self, x: int = 0, y: int = 500) -> None:
@@ -492,7 +501,7 @@ class BasePage:
             y: Vertical pixels (default: 500)
         """
         self.page.evaluate(f"window.scrollBy({x}, {y})")
-        print(f"Scrolled by {x}px horizontally and {y}px vertically")
+        test_logger.info(f"Scrolled by {x}px horizontally and {y}px vertically")
 
 
     # ============================================
@@ -524,7 +533,7 @@ class BasePage:
 
         # Take screenshot
         self.page.screenshot(path=filename, full_page=full_page)
-        print(f"Screenshot saved: {filename}")
+        test_logger.info(f"Screenshot saved: {filename}")
 
         return filename
 
@@ -547,7 +556,7 @@ class BasePage:
 
         filepath = f"screenshots/{filename}"
         self.page.locator(selector).screenshot(path=filepath)
-        print(f"Element screenshot saved: {filepath}")
+        test_logger.info(f"Element screenshot saved: {filepath}")
 
         return filepath
 
@@ -566,7 +575,7 @@ class BasePage:
             selector: Element selector
         """
         self.page.locator(selector).hover()
-        print(f"Hovered over: {selector}")
+        test_logger.info(f"Hovered over: {selector}")
     
     
     def double_click(self, selector: str) -> None:
@@ -577,7 +586,7 @@ class BasePage:
             selector: Element selector
         """
         self.page.locator(selector).dblclick()
-        print(f"Double clicked: {selector}")
+        test_logger.info(f"Double clicked: {selector}")
     
     
     def right_click(self, selector: str) -> None:
@@ -588,7 +597,7 @@ class BasePage:
             selector: Element selector
         """
         self.page.locator(selector).click(button="right")
-        print(f"Right clicked: {selector}")
+        test_logger.info(f"Right clicked: {selector}")
     
     
     def get_page_title(self) -> str:
@@ -599,7 +608,7 @@ class BasePage:
             str: Page title
         """
         title = self.page.title()
-        print(f"Page title: {title}")
+        test_logger.info(f"Page title: {title}")
         return title
     
     
@@ -613,4 +622,4 @@ class BasePage:
             selector: Input selector
         """
         self.page.locator(selector).clear()
-        print(f"Cleared input: {selector}")
+        test_logger.info(f"Cleared input: {selector}")

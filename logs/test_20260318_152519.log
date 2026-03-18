@@ -1,0 +1,32 @@
+2026-03-18 15:25:19 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:25:19 | INFO     | E2E_BDD_Tests | Test Logger initialized
+2026-03-18 15:25:19 | INFO     | E2E_BDD_Tests | Log file: logs/test_20260318_152519.log
+2026-03-18 15:25:19 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:25:23 | INFO     | E2E_BDD_Tests | 
+2026-03-18 15:25:23 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:25:23 | INFO     | E2E_BDD_Tests | Test started: test_logging_in_action[chromium]
+2026-03-18 15:25:23 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:25:28 | INFO     | E2E_BDD_Tests | STEP: Start logging test
+2026-03-18 15:25:28 | INFO     | E2E_BDD_Tests | STEP: Open todo page
+2026-03-18 15:25:28 | INFO     | E2E_BDD_Tests | ACTION: Navigating to: https://demo.playwright.dev/todomvc
+2026-03-18 15:25:30 | INFO     | E2E_BDD_Tests | 
+✔ Navigated to: https://demo.playwright.dev/todomvc
+2026-03-18 15:25:30 | INFO     | E2E_BDD_Tests | STEP: Add a todo
+2026-03-18 15:25:30 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Test con logging
+2026-03-18 15:25:30 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Test con logging
+2026-03-18 15:25:30 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | ASSERT: Verify that the todo exists
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Test con loggingm
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Test con loggingm
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 15:25:31 | INFO     | E2E_BDD_Tests | Test completed successfully
+2026-03-18 15:25:32 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:25:32 | INFO     | E2E_BDD_Tests | TEST PASSED: test_logging_in_action[chromium]
+2026-03-18 15:25:32 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 15:25:32 | INFO     | E2E_BDD_Tests | 

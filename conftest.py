@@ -232,3 +232,19 @@ def log_test_info(request):
         status = "PASSED"
     
     test_logger.test_end(test_name, status)
+    
+# ============================================
+# Faker Fixtures
+# ============================================
+
+from test_data.faker_factory import faker_factory
+
+@pytest.fixture
+def faker():
+    """
+    Provide Faker factory instance.
+    
+    Returns:
+        FakerFactory: Faker instance
+    """
+    return faker_factory

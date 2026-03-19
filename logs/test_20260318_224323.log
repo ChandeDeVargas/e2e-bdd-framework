@@ -1,0 +1,59 @@
+2026-03-18 22:43:23 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:23 | INFO     | E2E_BDD_Tests | Test Logger initialized
+2026-03-18 22:43:23 | INFO     | E2E_BDD_Tests | Log file: logs/test_20260318_224323.log
+2026-03-18 22:43:23 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:27 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:43:27 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:27 | INFO     | E2E_BDD_Tests | Test started: test_complete_workflow_with_logging_and_faker[chromium]
+2026-03-18 22:43:27 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:28 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:43:28 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:28 | INFO     | E2E_BDD_Tests | Test started: Complete Workflow Test
+2026-03-18 22:43:28 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:28 | INFO     | E2E_BDD_Tests | STEP: Initialize todo page
+2026-03-18 22:43:28 | INFO     | E2E_BDD_Tests | ACTION: Navigating to: https://demo.playwright.dev/todomvc
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests | 
+✔ Navigated to: https://demo.playwright.dev/todomvc
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests | STEP: Generate random todos with Faker
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests | Todos to add:
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests |   1. Idea party none more stand
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests |   2. Film decade to way federal senior
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests |   3. He teacher million discussion sometimes
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests | STEP: Add todos to application
+2026-03-18 22:43:31 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Idea party none more stand
+2026-03-18 22:43:32 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Idea party none more stand
+2026-03-18 22:43:32 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:43:33 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:43:33 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Film decade to way federal senior
+2026-03-18 22:43:33 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Film decade to way federal senior
+2026-03-18 22:43:33 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:43:33 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:43:33 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: He teacher million discussion sometimes
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: He teacher million discussion sometimes
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | STEP: Verify todos added
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | ASSERT: Count correct: 3 todos
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | ASSERT: Todo exists: Idea party none more stand
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | ASSERT: Todo exists: Film decade to way federal senior
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | ASSERT: Todo exists: He teacher million discussion sometimes
+2026-03-18 22:43:34 | INFO     | E2E_BDD_Tests | STEP: Complete first todo
+2026-03-18 22:43:35 | INFO     | E2E_BDD_Tests | ASSERT: First todo completed
+2026-03-18 22:43:35 | INFO     | E2E_BDD_Tests | STEP: Take final screenshot
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | Screenshot saved: screenshots/workflow_complete_20260318_224335.png
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | Screenshot saved: screenshots/workflow_complete_20260318_224335.png
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | Complete workflow executed successfully
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | TEST PASSED: Complete Workflow Test
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:36 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:43:39 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:39 | INFO     | E2E_BDD_Tests | TEST PASSED: test_complete_workflow_with_logging_and_faker[chromium]
+2026-03-18 22:43:39 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:43:39 | INFO     | E2E_BDD_Tests | 

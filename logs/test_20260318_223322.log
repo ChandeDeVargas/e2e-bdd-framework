@@ -1,0 +1,82 @@
+2026-03-18 22:33:22 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:22 | INFO     | E2E_BDD_Tests | Test Logger initialized
+2026-03-18 22:33:22 | INFO     | E2E_BDD_Tests | Log file: logs/test_20260318_223322.log
+2026-03-18 22:33:22 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:47 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:33:47 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:47 | INFO     | E2E_BDD_Tests | Test started: test_todos_with_random_data[chromium]
+2026-03-18 22:33:47 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:48 | INFO     | E2E_BDD_Tests | STEP: Generate random todos with Faker
+2026-03-18 22:33:48 | INFO     | E2E_BDD_Tests | ACTION: Navigating to: https://demo.playwright.dev/todomvc
+2026-03-18 22:33:51 | INFO     | E2E_BDD_Tests | 
+✔ Navigated to: https://demo.playwright.dev/todomvc
+2026-03-18 22:33:51 | INFO     | E2E_BDD_Tests | Generated todos: ['Door go writer', 'None base rate director catch', 'Free stand may same such stuff', 'Any whether will four fish black', 'Media music scene kid like']
+2026-03-18 22:33:51 | INFO     | E2E_BDD_Tests | STEP: Add todo: Door go writer
+2026-03-18 22:33:51 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Door go writer
+2026-03-18 22:33:51 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Door go writer
+2026-03-18 22:33:51 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:33:52 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:33:52 | INFO     | E2E_BDD_Tests | STEP: Add todo: None base rate director catch
+2026-03-18 22:33:52 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: None base rate director catch
+2026-03-18 22:33:52 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: None base rate director catch
+2026-03-18 22:33:52 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:33:53 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:33:53 | INFO     | E2E_BDD_Tests | STEP: Add todo: Free stand may same such stuff
+2026-03-18 22:33:53 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Free stand may same such stuff
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Free stand may same such stuff
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | STEP: Add todo: Any whether will four fish black
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Any whether will four fish black
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Any whether will four fish black
+2026-03-18 22:33:54 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:33:55 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:33:55 | INFO     | E2E_BDD_Tests | STEP: Add todo: Media music scene kid like
+2026-03-18 22:33:55 | INFO     | E2E_BDD_Tests | ACTION: Filling '.new-todo' with text: Media music scene kid like
+2026-03-18 22:33:55 | INFO     | E2E_BDD_Tests | 
+✔ Filled '.new-todo' with text: Media music scene kid like
+2026-03-18 22:33:55 | INFO     | E2E_BDD_Tests | ACTION: Pressing key: 'Enter' on: .new-todo
+2026-03-18 22:33:56 | INFO     | E2E_BDD_Tests | 
+✔ Pressed key: 'Enter' on: .new-todo
+2026-03-18 22:33:56 | INFO     | E2E_BDD_Tests | Random todos with data added correctly
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | TEST PASSED: test_todos_with_random_data[chromium]
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | Test started: test_faker_user_data
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | STEP: Generate random user data
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | Generated user:
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests |   Username: tyler82
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests |   Email: banksjohn@example.net
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests |   Full Name: Daniel Higgins
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests |   Phone: 001-204-204-8769x6118
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests |   Password: &R9FQ8o+_$AH
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | User data generated correctly
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | TEST PASSED: test_faker_user_data
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | Test started: test_multiple_users
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | STEP: Generate 10 random users
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 10 unique users generated
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 1. Cassidy Barnes (angelahobbs@example.org)
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 2. William Williams (panthony@example.net)
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 3. Johnathan Camacho (andrew13@example.org)
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | TEST PASSED: test_multiple_users
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | ============================================================
+2026-03-18 22:33:59 | INFO     | E2E_BDD_Tests | 
